@@ -36,89 +36,76 @@
       <!-- Mobile Menu Button -->
       <button
         @click="isOpen = !isOpen"
-        class="md:hidden p-2 text-muted hover:text-primary transition-colors z-50 relative"
+        class="md:hidden p-2 text-dark hover:text-primary transition-colors z-[70] relative"
+        aria-label="Toggle Menu"
       >
-        <svg
-          v-if="!isOpen"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <transition name="rotate" mode="out-in">
+          <i v-if="!isOpen" class="ri-menu-4-line text-2xl" key="menu"></i>
+          <i v-else class="ri-close-line text-3xl" key="close"></i>
+        </transition>
       </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div
-      v-show="isOpen"
-      class="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center space-y-8 animate-fade-in"
+    <transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-4"
     >
-      <a
-        href="#home"
-        @click="isOpen = false"
-        class="text-2xl font-medium text-dark hover:text-primary"
-        >Home</a
+      <div
+        v-show="isOpen"
+        class="fixed inset-0 z-[60] bg-white md:hidden flex flex-col items-center justify-center space-y-8 h-screen w-screen"
       >
-      <a
-        href="#about"
-        @click="isOpen = false"
-        class="text-2xl font-medium text-dark hover:text-primary"
-        >About</a
-      >
-      <a
-        href="#projects"
-        @click="isOpen = false"
-        class="text-2xl font-medium text-dark hover:text-primary"
-        >Projects</a
-      >
-      <a
-        href="#contact"
-        @click="isOpen = false"
-        class="px-8 py-3 rounded-full bg-dark text-white text-lg font-medium hover:bg-gray-800"
-        >Contact Me</a
-      >
-    </div>
+        <a
+          v-for="item in ['Home', 'About', 'Projects']"
+          :key="item"
+          :href="`#${item.toLowerCase()}`"
+          @click="isOpen = false"
+          class="text-4xl font-heading font-black text-dark hover:text-primary transition-colors tracking-tight"
+        >
+          {{ item }}
+        </a>
+
+        <a
+          href="#contact"
+          @click="isOpen = false"
+          class="mt-8 px-10 py-4 rounded-full bg-dark text-white text-xl font-medium hover:bg-gray-800 transition-transform active:scale-95 shadow-xl"
+        >
+          Contact Me
+        </a>
+      </div>
+    </transition>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const isOpen = ref(false)
+
+// Lock body scroll when menu is open
+watch(isOpen, (value) => {
+  if (value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
 </script>
 
 <style scoped>
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out forwards;
+/* Icon Rotation Transition */
+.rotate-enter-active,
+.rotate-leave-active {
+  transition: all 0.2s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.rotate-enter-from,
+.rotate-leave-to {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
 }
 </style>
