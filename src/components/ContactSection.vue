@@ -5,7 +5,7 @@
       class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/20 blur-[100px] rounded-full pointer-events-none"
     ></div>
 
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center reveal-on-scroll">
       <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">
         Let's build something amazing.
       </h2>

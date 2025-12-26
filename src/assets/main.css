@@ -34,3 +34,16 @@
   --line-height-extra-loose: 2.5;
   --line-height-12: 3rem;
 }
+
+/* Scroll Animation Utilities */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -7,7 +7,7 @@
         class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"
       ></div>
       <div
-        class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"
+        class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-400 opacity-20 blur-[100px]"
       ></div>
 
       <div
@@ -25,7 +25,8 @@
       <div class="max-w-4xl">
         <!-- Badge -->
         <div
-          class="inline-flex items-center px-3 py-1 rounded-full border border-black-100 bg-gray-50 text-gray-600 text-xs font-semibold uppercase tracking-wide mb-8"
+          class="inline-flex items-center px-3 py-1 rounded-full border border-black-100 bg-gray-50 text-gray-600 text-xs font-semibold uppercase tracking-wide mb-8 reveal-on-scroll"
+          style="transition-delay: 100ms"
         >
           <span class="w-2 h-2 rounded-full bg-green-600 mr-2 animate-pulse"></span>
           Available for Contribution
@@ -33,18 +34,27 @@
 
         <!-- Headline -->
         <h1
-          class="font-heading font-bold tracking-tight text-dark text-5xl md:text-8xl leading-none mb-6"
+          class="font-heading font-bold tracking-tight text-dark text-5xl md:text-8xl leading-none mb-6 reveal-on-scroll"
+          style="transition-delay: 200ms"
         >
           Hi, I am
-          <span class="text-outline"> Kshittiz. </span>
+          <span class="text-outline inline-block hover:scale-105 transition-transform duration-300">
+            Kshittiz.
+          </span>
         </h1>
 
-        <h2 class="font-heading text-3xl md:text-5xl font-bold text-dark/80 mb-8">
+        <h2
+          class="font-heading text-3xl md:text-5xl font-bold text-dark/80 mb-8 reveal-on-scroll"
+          style="transition-delay: 300ms"
+        >
           Pragmatic Programmer & Learner.
         </h2>
 
         <!-- Description -->
-        <p class="text-lg md:text-xl text-muted max-w-2xl leading-extra-loose mb-10 font-sans">
+        <p
+          class="text-lg md:text-xl text-muted max-w-2xl leading-extra-loose mb-10 font-sans reveal-on-scroll"
+          style="transition-delay: 400ms"
+        >
           I’m a Full-Stack Developer specialized in
           <span class="font-semibold text-dark">GIS-based applications</span>. I build robust
           platforms using <span class="font-semibold text-dark">Django</span>,
@@ -53,7 +63,7 @@
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 reveal-on-scroll" style="transition-delay: 500ms">
           <a
             href="#projects"
             class="px-8 py-4 rounded-xl bg-dark text-white font-semibold hover:bg-gray-800 transition-all transform hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200"
@@ -69,7 +79,10 @@
         </div>
 
         <!-- Social Proof / Tech Stack (Optional) -->
-        <div class="mt-16 border-t border-gray-100 pt-8">
+        <div
+          class="mt-16 border-t border-gray-100 pt-8 reveal-on-scroll"
+          style="transition-delay: 600ms"
+        >
           <p class="text-sm text-gray-400 font-medium mb-4 uppercase tracking-wider">Tech Stack</p>
           <div
             class="flex flex-wrap gap-6 grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100"

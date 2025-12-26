@@ -2,7 +2,7 @@
   <section id="about" class="py-24 bg-light relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
       <!-- Text Content -->
-      <div class="relative z-10">
+      <div class="relative z-10 reveal-on-scroll">
         <h2 class="font-heading text-4xl font-bold text-dark mb-6">Profile Summary</h2>
         <p class="text-muted text-lg leading-relaxed mb-6">
           {{ PROFILE.bio_intro }}
@@ -53,7 +53,7 @@
       </div>
 
       <!-- Image / Decor -->
-      <div class="relative sticky top-24">
+      <div class="relative sticky top-24 reveal-on-scroll" style="transition-delay: 0.2s">
         <div
           class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-2xl transform rotate-3 scale-105 opacity-20"
         ></div>

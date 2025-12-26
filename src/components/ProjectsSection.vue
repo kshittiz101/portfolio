@@ -2,7 +2,7 @@
   <section id="projects" class="relative z-10 bg-white overflow-hidden">
     <div class="py-24 max-w-7xl mx-auto px-6">
       <!-- Header -->
-      <div class="max-w-3xl mb-24">
+      <div class="max-w-3xl mb-24 reveal-on-scroll">
         <h2 class="font-heading text-5xl md:text-6xl font-bold text-dark mb-6 leading-tight">
           Selected <br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
@@ -17,7 +17,11 @@
 
       <!-- Major Projects (Zig-Zag Layout) -->
       <div class="space-y-32 mb-32">
-        <article v-for="(project, index) in MAJOR_PROJECTS" :key="index" class="relative group">
+        <article
+          v-for="(project, index) in MAJOR_PROJECTS"
+          :key="index"
+          class="relative group reveal-on-scroll"
+        >
           <div
             :class="[
               'flex flex-col gap-12 items-center',
@@ -118,7 +122,7 @@
 
     <!-- Other Projects Section (Full Width Gray) -->
     <div v-if="OTHER_PROJECTS.length > 0" class="py-24 bg-light border-t border-gray-100">
-      <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-7xl mx-auto px-6 reveal-on-scroll">
         <h3 class="font-heading text-2xl font-bold text-dark mb-10 pb-4 inline-block">
           Other Noteworthy Projects
         </h3>
