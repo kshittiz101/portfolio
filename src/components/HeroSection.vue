@@ -1,5 +1,8 @@
 <template>
-  <div class="relative pt-20 overflow-hidden bg-white selection:bg-indigo-100 selection:text-dark">
+  <div
+    id="home"
+    class="relative pt-20 overflow-hidden bg-white selection:bg-indigo-100 selection:text-dark"
+  >
     <!-- Background Decor -> Blobs/Mesh -->
     <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
       <!-- Grid Pattern -->
