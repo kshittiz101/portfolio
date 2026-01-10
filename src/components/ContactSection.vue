@@ -14,28 +14,59 @@
         your visions.
       </p>
 
-      <div class="flex flex-col items-center justify-center gap-6 mb-24">
-        <a
-          :href="'mailto:' + CONTACT.email"
-          class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-gray-50 transition-all transform hover:-translate-y-1 shadow-xl shadow-white/5 overflow-hidden"
+      <form
+        @submit.prevent="handleSubmit"
+        class="max-w-xl mx-auto mb-24 text-left space-y-6"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+          <input
+            id="name"
+            v-model="form.name"
+            type="text"
+            required
+            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+          <input
+            id="email"
+            v-model="form.email"
+            type="email"
+            required
+            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div>
+          <label for="query" class="block text-sm font-medium text-gray-300 mb-2">Query</label>
+          <textarea
+            id="query"
+            v-model="form.query"
+            rows="5"
+            required
+            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none"
+            placeholder="Tell me about your project or idea..."
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 rounded-lg bg-white text-dark font-bold hover:bg-gray-50 transition-all transform hover:-translate-y-1 shadow-xl shadow-white/5 overflow-hidden"
         >
           <span class="relative z-10 flex items-center gap-2">
             <i class="ri-mail-send-line text-xl"></i>
-            <span class="text-lg">Say Hello</span>
+            <span class="text-lg">{{ isSubmitting ? 'Sending...' : 'Send Message' }}</span>
           </span>
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity"
-          ></div>
-        </a>
-        <p class="text-gray-500 text-sm">
-          Or drop a mail at
-          <a
-            :href="'mailto:' + CONTACT.email"
-            class="text-gray-300 hover:text-white transition-colors border-b border-gray-700 hover:border-white pb-0.5"
-            >{{ CONTACT.email }}</a
-          >
-        </p>
-      </div>
+        </button>
+
+        <p v-if="successMessage" class="text-green-400 text-center text-sm">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="text-red-400 text-center text-sm">{{ errorMessage }}</p>
+      </form>
 
       <footer
         class="border-t border-gray-800/50 pt-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
@@ -80,5 +111,42 @@
 </template>
 
 <script setup lang="ts">
+import { ref, reactive } from 'vue'
 import { CONTACT, PROFILE } from '@/constants'
+
+const form = reactive({
+  name: '',
+  email: '',
+  query: ''
+})
+
+const isSubmitting = ref(false)
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const handleSubmit = () => {
+  isSubmitting.value = true
+  successMessage.value = ''
+  errorMessage.value = ''
+
+  const subject = encodeURIComponent(`Contact from ${form.name}`)
+  const body = encodeURIComponent(
+    `Name: ${form.name}\nEmail: ${form.email}\n\nQuery:\n${form.query}`
+  )
+
+  window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
+
+  setTimeout(() => {
+    isSubmitting.value = false
+    successMessage.value = 'Opening your email client...'
+
+    form.name = ''
+    form.email = ''
+    form.query = ''
+
+    setTimeout(() => {
+      successMessage.value = ''
+    }, 3000)
+  }, 1000)
+}
 </script>
