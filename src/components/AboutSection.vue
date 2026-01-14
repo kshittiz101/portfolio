@@ -16,11 +16,8 @@
           <div>
             <h3 class="font-bold text-dark text-xl mb-4">Core Skills & Tools</h3>
             <div class="flex flex-wrap gap-2">
-              <span
-                v-for="skill in SKILLS"
-                :key="skill"
-                class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm font-medium text-indigo-600"
-              >
+              <span v-for="skill in SKILLS" :key="skill"
+                class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm font-medium text-indigo-600">
                 {{ skill }}
               </span>
             </div>
@@ -30,11 +27,8 @@
           <div>
             <h3 class="font-bold text-dark text-xl mb-4">Education</h3>
             <div class="space-y-4">
-              <div
-                v-for="edu in EDUCATION"
-                :key="edu.level"
-                class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm"
-              >
+              <div v-for="edu in EDUCATION" :key="edu.level"
+                class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
                 <h4 class="font-bold text-dark">{{ edu.level }}</h4>
                 <p class="text-sm text-gray-500">{{ edu.institution }}</p>
                 <p class="text-xs text-muted mt-1">{{ edu.year }}</p>
@@ -55,11 +49,10 @@
       <!-- Image / Decor -->
       <div class="relative sticky top-24 reveal-on-scroll" style="transition-delay: 0.2s">
         <div
-          class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-2xl transform rotate-3 scale-105 opacity-20"
-        ></div>
+          class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-2xl transform rotate-3 scale-105 opacity-20">
+        </div>
         <div
-          class="relative bg-white p-2 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-500"
-        >
+          class="relative bg-white p-2 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
           <MapCard />
         </div>
       </div>
