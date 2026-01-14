@@ -14,10 +14,7 @@
         your visions.
       </p>
 
-      <form
-        @submit.prevent="handleSubmit"
-        class="max-w-xl mx-auto mb-24 text-left space-y-6"
-      >
+      <form @submit.prevent="handleSubmit" class="max-w-xl mx-auto mb-24 text-left space-y-6">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
           <input
@@ -117,7 +114,7 @@ import { CONTACT, PROFILE } from '@/constants'
 const form = reactive({
   name: '',
   email: '',
-  query: ''
+  query: '',
 })
 
 const isSubmitting = ref(false)
@@ -131,7 +128,7 @@ const handleSubmit = () => {
 
   const subject = encodeURIComponent(`Contact from ${form.name}`)
   const body = encodeURIComponent(
-    `Name: ${form.name}\nEmail: ${form.email}\n\nQuery:\n${form.query}`
+    `Name: ${form.name}\nEmail: ${form.email}\n\nQuery:\n${form.query}`,
   )
 
   window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
